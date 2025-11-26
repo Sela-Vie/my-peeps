@@ -87,7 +87,7 @@ def define_routes(
 
 	
 	@app.route("/people", methods=["DELETE"])
-	def GET_sleep_log_head():
+	def DELETE_person():
 		ret_val = 200
 		try:
 			data:dict = f_req.get_json()
