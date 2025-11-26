@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Name=cibo
+Name=My-Peeps
 Exec=sh -c '/home/jules/git/My-Peeps/autostart/My-Peeps.sh'
 
