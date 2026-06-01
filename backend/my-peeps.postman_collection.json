@@ -1,0 +1,267 @@
+{
+  "info": {
+    "_postman_id": "e2b0a74b-3b36-4ccb-a4dc-c62e3c6c6b85",
+    "name": "my-peeps",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38818934"
+  },
+  "item": [
+    {
+      "name": "people",
+      "item": [
+        {
+          "name": "people-post-01",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name_display\": \"John Does\",\n  \"name_full\": \"Johnathan Alexander Doe\",\n  \"birth_date_day\": 15,\n  \"birth_date_month\": 6,\n  \"birth_date_year\": 1995\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://0.0.0.0:8080/people",
+              "protocol": "http",
+              "host": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              "port": "8080",
+              "path": [
+                "people"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "people-post-02",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name_display\": \"John Doeee\",\n  \"name_full\": \"Johnathan Alexander Doe\",\n  \"birth_date_day\": 15,\n  \"birth_date_month\": 6,\n  \"birth_date_year\": 1995\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://0.0.0.0:5000/people",
+              "protocol": "http",
+              "host": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              "port": "5000",
+              "path": [
+                "people"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "people-get",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"id\":\"\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://0.0.0.0:8080/people",
+              "protocol": "http",
+              "host": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              "port": "8080",
+              "path": [
+                "people"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "people-get-all",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"id\":\"\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://0.0.0.0:8080/people",
+              "protocol": "http",
+              "host": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              "port": "8080",
+              "path": [
+                "people"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "people-delete",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\":4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://0.0.0.0:8080/people",
+              "protocol": "http",
+              "host": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              "port": "8080",
+              "path": [
+                "people"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "people-upcoming",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"month\":7\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://0.0.0.0:5000/people/upcoming",
+              "protocol": "http",
+              "host": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              "port": "5000",
+              "path": [
+                "people",
+                "upcoming"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "people-update",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"id\":1}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://0.0.0.0:5000/people",
+              "protocol": "http",
+              "host": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              "port": "5000",
+              "path": [
+                "people"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "people_logs",
+      "item": []
+    }
+  ]
+}
