@@ -16,8 +16,8 @@ from db_connection import SQLConnection
 class People(SQLConnection):
 	table_name:str = "people"
 
-	def init_table_people(self)->None:
-		CREATE_table_people = f"""
+	def init_table(self)->None:
+		CREATE_table = f"""
 		CREATE TABLE IF NOT EXISTS {self.table_name} (
 			id INTEGER PRIMARY KEY AUTOINCREMENT,
 			created_at TEXT DEFAULT CURRENT_TIMESTAMP,
@@ -31,7 +31,7 @@ class People(SQLConnection):
 		);
 		"""
 		self.SQL_execute(
-			SQL_command=CREATE_table_people
+			SQL_command=CREATE_table
 		)
 
 	# ========================================================================
