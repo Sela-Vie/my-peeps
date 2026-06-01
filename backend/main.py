@@ -7,36 +7,23 @@
 # ========================================================================
 
 from flask import Flask
-from routes import define_routes
+from routes_people import People
 
 # ========================================================================
-# CLASS
+# MAIN
 # ========================================================================
-
-class API():
-	def __init__(
-		self, 
-		db_file:str = ""
-	):
-		self.db_file:str = db_file
-		self.flask_object:Flask = Flask(__name__)
-	
-	def run(self):
-		define_routes(
-			app = self.flask_object,
-			db_file = self.db_file
-		)
-		self.flask_object.run(
-			debug=True, 
-			host='0.0.0.0', 
-			port=5000
-		)
 
 # Run server
 if __name__ == "__main__":
-	db_file:str = "my_peeps.db"
+	db_file_name:str = "my_peeps.db"
 
-	backend:API = API(
-		db_file=db_file
+	app = Flask(__name__)
+	classic:People = People(db_file_name=db_file_name)
+	classic.init_table_people()
+	classic.define_routes(app=app)
+
+	app.run(
+		debug=True, 
+		host='0.0.0.0', 
+		port=8080
 	)
-	backend.run()
