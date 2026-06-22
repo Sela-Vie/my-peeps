@@ -8,6 +8,7 @@
 
 from flask import Flask
 from routes_people import People
+from routes_people_logs import PeopleLogs
 
 # ========================================================================
 # MAIN
@@ -18,9 +19,12 @@ if __name__ == "__main__":
 	db_file_name:str = "my_peeps.db"
 
 	app = Flask(__name__)
-	classic:People = People(db_file_name=db_file_name)
-	classic.init_table_people()
-	classic.define_routes(app=app)
+	people_table:People = People(db_file_name=db_file_name)
+	people_table.init_table()
+	people_table.define_routes(app=app)
+	people_logs_table:PeopleLogs = PeopleLogs(db_file_name=db_file_name)
+	people_logs_table.init_table()
+	people_logs_table.define_routes(app=app)
 
 	app.run(
 		debug=True, 
