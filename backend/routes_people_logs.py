@@ -20,13 +20,13 @@ class PeopleLogs(SQLConnection):
 		CREATE_table = f"""
 		CREATE TABLE IF NOT EXISTS {self.table_name} (
 			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			id_user INTEGER NOT NULL
+			id_user INTEGER NOT NULL,
 			created_at TEXT DEFAULT CURRENT_TIMESTAMP,
 			updated_at TEXT DEFAULT CURRENT_TIMESTAMP,
 			deleted_at TEXT,
 			content TEXT UNIQUE,
 			
-			FOREIGN KEY (user_id) REFERENCES users(people)
+			FOREIGN KEY (id_user) REFERENCES people(id)
 		);
 		"""
 		self.SQL_execute(
@@ -40,7 +40,7 @@ class PeopleLogs(SQLConnection):
 		app:Flask
 	):
 		@app.route(f"/{self.table_name}", methods=["POST"])
-		def POST():
+		def POST_PeopleLogs():
 			try:
 				data:dict = f_req.get_json()
 
@@ -52,11 +52,8 @@ class PeopleLogs(SQLConnection):
 					}), 400
 
 				fields = [
-					"name_display",
-					"name_full",
-					"birth_date_day",
-					"birth_date_month",
-					"birth_date_year"
+					"id_user",
+					"content"
 				]
 
 				for field in fields:
@@ -69,19 +66,13 @@ class PeopleLogs(SQLConnection):
 				# SQL COMMAND
 				INSERT_person = f"""
 				INSERT INTO {self.table_name} (
-					name_display,
-					name_full,
-					birth_date_day, 
-					birth_date_month, 
-					birth_date_year
-				) VALUES (?, ?, ?, ?, ?);
+					id_user,
+					content
+				) VALUES (?, ?);
 				"""
 				params:tuple = (
-					data.get("name_display"),
-					data.get("name_full"),
-					data.get("birth_date_day"),
-					data.get("birth_date_month"),
-					data.get("birth_date_year")
+					data.get("id_user"),
+					data.get("content"),
 				)
 
 				self.SQL_execute(
@@ -91,7 +82,7 @@ class PeopleLogs(SQLConnection):
 
 				return jsonify({
 					"success": True,
-					"message": "person entry created successfully"
+					"message": "person_log entry created successfully"
 				}), 201
 			except Exception as e:
 				return jsonify({
@@ -101,7 +92,7 @@ class PeopleLogs(SQLConnection):
 		# ========================================================================
 			
 		@app.route(f"/{self.table_name}", methods=["GET"])
-		def GET():
+		def GET_PeopleLogs():
 			try:
 				id:int = f_req.get_json().get("id")
 
@@ -140,7 +131,7 @@ class PeopleLogs(SQLConnection):
 
 		# is only a soft delete
 		@app.route(f"/{self.table_name}", methods=["DELETE"])
-		def DELETE():
+		def DELETE_PeopleLogs():
 			try:
 				id:int = f_req.get_json().get("id")
 				if not id:
@@ -163,12 +154,12 @@ class PeopleLogs(SQLConnection):
 				if not fetch:
 					return jsonify({
 						"success": False,
-						"message": f"Person not found"
+						"message": f"person_log not found"
 					}), 404
 				elif fetch[0][1] :
 					return jsonify({
 						"success": False,
-						"message": f"Person already deleted"
+						"message": f"person_log already deleted"
 					}), 404
 
 
@@ -186,7 +177,7 @@ class PeopleLogs(SQLConnection):
 
 				return jsonify({
 					"success": True,
-					"message": f"person entry deleted successfully"
+					"message": f"person_log entry deleted successfully"
 				}), 201
 			except Exception as e:
 				return jsonify({
@@ -196,7 +187,7 @@ class PeopleLogs(SQLConnection):
 		# ========================================================================
 
 		@app.route(f"/{self.table_name}", methods=["PATCH"])
-		def PATCH():
+		def PATCH_PeopleLogs():
 			try:
 				data:dict = f_req.get_json()
 				if not data:
@@ -216,27 +207,23 @@ class PeopleLogs(SQLConnection):
 				SELECT_person = f"""
 					SELECT id, deleted_at
 					FROM {self.table_name}
-					WHERE id = {self.SQL_value(id)};
+					WHERE id = {id};
 				"""
 				fetch:list = self.SQL_fetch(SELECT_person)
 				if not fetch:
 					return jsonify({
 						"success": False,
-						"message": f"Person not found"
+						"message": f"person_log not found"
 					}), 404
 				elif fetch[0][1] :
 					return jsonify({
 						"success": False,
-						"message": f"Person already deleted"
+						"message": f"person_log already deleted"
 					}), 404
 				
 				# check the fields that are to be updated
 				fields = [
-					"name_display",
-					"name_full",
-					"birth_date_day",
-					"birth_date_month",
-					"birth_date_year"
+					"content"
 				]
 
 				missing_field_flag:bool = False
@@ -255,20 +242,12 @@ class PeopleLogs(SQLConnection):
 				UPDATE_person = f"""
 					UPDATE {self.table_name}
 					SET 
-						name_display = ?,
-						name_full = ?,
-						birth_date_day = ?,
-						birth_date_month = ?,
-						birth_date_year = ?,
+						content = ?,
 						updated_at = CURRENT_TIMESTAMP
 					WHERE id = ?;
 				"""
 				params = (
-					data.get("name_display"),
-					data.get("name_full"),
-					data.get("birth_date_day"),
-					data.get("birth_date_month"),
-					data.get("birth_date_year"),
+					data.get("content"),
 					id
 				)
 
@@ -279,7 +258,7 @@ class PeopleLogs(SQLConnection):
 
 				return jsonify({
 					"success": True,
-					"message": f"person entry updated successfully"
+					"message": f"person_log entry updated successfully"
 				}), 201
 			except Exception as e:
 				return jsonify({
@@ -288,47 +267,3 @@ class PeopleLogs(SQLConnection):
 				}), 500
 		# ========================================================================
 		
-		@app.route(f"/{self.table_name}/upcoming", methods=["GET"])
-		def upcoming():
-			try:
-				data:dict = f_req.get_json()
-
-				# DATA VALIDATION
-				if not data:
-					return jsonify({
-						"success": False,
-						"message": "Request body must be JSON"
-					}), 400
-				if "month" not in data:
-						return jsonify({
-							"success": False,
-							"message": f"Missing required field: month"
-						}), 400
-				
-				month:int = int(data.get("month"))
-
-				# BASE QUERY
-				SELECT_person = f"""
-					SELECT *
-					FROM {self.table_name}
-					WHERE deleted_at IS NULL
-					AND birth_date_month IN (?, ?);
-					"""
-				params:tuple = (month, (month%12)+1)
-
-				rows = self.SQL_fetch(
-					SQL_command=SELECT_person,
-					params = params
-				)
-
-				# NORMALIZE OUTPUT (depends on your SQL_execute return format)
-				return jsonify({
-					"success": True,
-					"data": rows
-				}), 200
-
-			except Exception as e:
-				return jsonify({
-					"success": False,
-					"message": str(e)
-				}), 500
