@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=My-Peeps
-Exec=sh -c '/home/jules/git/My-Peeps/autostart/My-Peeps.sh'
-
