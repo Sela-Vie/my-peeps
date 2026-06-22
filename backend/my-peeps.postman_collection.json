@@ -19,7 +19,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name_display\": \"John Does\",\n  \"name_full\": \"Johnathan Alexander Doe\",\n  \"birth_date_day\": 15,\n  \"birth_date_month\": 6,\n  \"birth_date_year\": 1995\n}",
+              "raw": "{\n  \"name_display\": \"John Doe 1\",\n  \"name_full\": \"Johnathan Alexander Doe\",\n  \"birth_date_day\": 15,\n  \"birth_date_month\": 6,\n  \"birth_date_year\": 1995\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -27,17 +27,9 @@
               }
             },
             "url": {
-              "raw": "http://0.0.0.0:8080/people",
-              "protocol": "http",
+              "raw": "{{base_url}}people",
               "host": [
-                "0",
-                "0",
-                "0",
-                "0"
-              ],
-              "port": "8080",
-              "path": [
-                "people"
+                "{{base_url}}people"
               ]
             }
           },
@@ -53,7 +45,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name_display\": \"John Doeee\",\n  \"name_full\": \"Johnathan Alexander Doe\",\n  \"birth_date_day\": 15,\n  \"birth_date_month\": 6,\n  \"birth_date_year\": 1995\n}",
+              "raw": "{\n  \"name_display\": \"John Doe 2\",\n  \"name_full\": \"Johnathan Alexander Doe\",\n  \"birth_date_day\": 15,\n  \"birth_date_month\": 6,\n  \"birth_date_year\": 1995\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -61,17 +53,9 @@
               }
             },
             "url": {
-              "raw": "http://0.0.0.0:5000/people",
-              "protocol": "http",
+              "raw": "{{base_url}}people",
               "host": [
-                "0",
-                "0",
-                "0",
-                "0"
-              ],
-              "port": "5000",
-              "path": [
-                "people"
+                "{{base_url}}people"
               ]
             }
           },
@@ -90,7 +74,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\"id\":\"\"}",
+              "raw": "{\"id\":\"1\"}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -98,17 +82,9 @@
               }
             },
             "url": {
-              "raw": "http://0.0.0.0:8080/people",
-              "protocol": "http",
+              "raw": "{{base_url}}people",
               "host": [
-                "0",
-                "0",
-                "0",
-                "0"
-              ],
-              "port": "8080",
-              "path": [
-                "people"
+                "{{base_url}}people"
               ]
             }
           },
@@ -127,7 +103,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\"id\":\"\"}",
+              "raw": "{\"id\":null}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -135,17 +111,9 @@
               }
             },
             "url": {
-              "raw": "http://0.0.0.0:8080/people",
-              "protocol": "http",
+              "raw": "{{base_url}}people",
               "host": [
-                "0",
-                "0",
-                "0",
-                "0"
-              ],
-              "port": "8080",
-              "path": [
-                "people"
+                "{{base_url}}people"
               ]
             }
           },
@@ -169,17 +137,9 @@
               }
             },
             "url": {
-              "raw": "http://0.0.0.0:8080/people",
-              "protocol": "http",
+              "raw": "{{base_url}}people",
               "host": [
-                "0",
-                "0",
-                "0",
-                "0"
-              ],
-              "port": "8080",
-              "path": [
-                "people"
+                "{{base_url}}people"
               ]
             }
           },
@@ -198,7 +158,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"month\":7\n}",
+              "raw": "{\n    \"month\":12\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -206,17 +166,11 @@
               }
             },
             "url": {
-              "raw": "http://0.0.0.0:5000/people/upcoming",
-              "protocol": "http",
+              "raw": "{{base_url}}people/upcoming",
               "host": [
-                "0",
-                "0",
-                "0",
-                "0"
+                "{{base_url}}people"
               ],
-              "port": "5000",
               "path": [
-                "people",
                 "upcoming"
               ]
             }
@@ -233,7 +187,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\"id\":1}",
+              "raw": "{\n  \"id\":1,\n  \"name_display\": \"John Doe 1 EDITED\",\n  \"name_full\": \"Johnathan Alexander Doe\",\n  \"birth_date_day\": 15,\n  \"birth_date_month\": 12,\n  \"birth_date_year\": 1997\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -241,17 +195,9 @@
               }
             },
             "url": {
-              "raw": "http://0.0.0.0:5000/people",
-              "protocol": "http",
+              "raw": "{{base_url}}people",
               "host": [
-                "0",
-                "0",
-                "0",
-                "0"
-              ],
-              "port": "5000",
-              "path": [
-                "people"
+                "{{base_url}}people"
               ]
             }
           },
@@ -260,8 +206,201 @@
       ]
     },
     {
-      "name": "people_logs",
-      "item": []
+      "name": "people_log",
+      "item": [
+        {
+          "name": "people_log-post-01",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_user\": 1,\n  \"content\": \"test content 1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}people_logs",
+              "host": [
+                "{{base_url}}people_logs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "people_log-post-02",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_user\": 99,\n  \"content\": \"test content 2\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}people_logs",
+              "host": [
+                "{{base_url}}people_logs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "people_log-get",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"id\":\"1\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}people_logs",
+              "host": [
+                "{{base_url}}people_logs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "people_log-get-all",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"id\":null}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}people_logs",
+              "host": [
+                "{{base_url}}people_logs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "people_log-delete",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\":1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}people_logs",
+              "host": [
+                "{{base_url}}people_logs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "people_log-update",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\":1,\n  \"content\": \"test content EDITED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}people_logs",
+              "host": [
+                "{{base_url}}people_logs"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
     }
   ]
 }
