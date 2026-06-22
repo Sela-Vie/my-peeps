@@ -26,23 +26,24 @@ class SQLConnection():
 			self,
 			SQL_command:str,
 			params:tuple = ()
-		) -> bool:
-		is_executed_just_fine = False
+		) -> None:
 
 		try:
-			this_connection:sqlite3.Connection = sqlite3.connect(self.db_file_name)
-			this_cursor:sqlite3.Cursor = this_connection.cursor()
-			this_cursor.execute(
-				textwrap.dedent(SQL_command),
-				params  # tuple or dict
-			)
-			this_connection.commit()
-			this_connection.close()
-			is_executed_just_fine = True
+			# this_connection = sqlite3.connect(self.db_file_name)
+			# the with statement avoids the database locking when
+			# an sql error happens and the database connection isnt closed
+			with sqlite3.connect(self.db_file_name) as this_connection:
+				this_connection.execute("PRAGMA foreign_keys = ON;")		
+				# this one makes the foreign_keys necessarily exist before you can assign them
+				
+				this_cursor:sqlite3.Cursor = this_connection.cursor()
+				this_cursor.execute(
+					textwrap.dedent(SQL_command),
+					params  # tuple or dict
+				)
+				this_connection.commit()
 		except Exception as e:
 			raise(e)
-
-		return is_executed_just_fine
 
 	def SQL_fetch(
 			self,
@@ -53,6 +54,9 @@ class SQLConnection():
 
 		try:
 			this_connection:sqlite3.Connection = sqlite3.connect(self.db_file_name)
+			this_connection.execute("PRAGMA foreign_keys = ON;")
+			# this one makes the foreign_keys necessarily exist before you can assign them
+			
 			this_cursor:sqlite3.Cursor = this_connection.cursor()
 			this_cursor.execute(
 				textwrap.dedent(SQL_command),
