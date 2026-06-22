@@ -41,7 +41,7 @@ class People(SQLConnection):
 		app:Flask
 	):
 		@app.route(f"/{self.table_name}", methods=["POST"])
-		def POST():
+		def POST_People():
 			try:
 				data:dict = f_req.get_json()
 
@@ -102,7 +102,7 @@ class People(SQLConnection):
 		# ========================================================================
 			
 		@app.route(f"/{self.table_name}", methods=["GET"])
-		def GET():
+		def GET_People():
 			try:
 				id:int = f_req.get_json().get("id")
 
@@ -141,7 +141,7 @@ class People(SQLConnection):
 
 		# is only a soft delete
 		@app.route(f"/{self.table_name}", methods=["DELETE"])
-		def DELETE():
+		def DELETE_People():
 			try:
 				id:int = f_req.get_json().get("id")
 				if not id:
@@ -197,7 +197,7 @@ class People(SQLConnection):
 		# ========================================================================
 
 		@app.route(f"/{self.table_name}", methods=["PATCH"])
-		def PATCH():
+		def PATCH_People():
 			try:
 				data:dict = f_req.get_json()
 				if not data:
@@ -217,7 +217,7 @@ class People(SQLConnection):
 				SELECT_person = f"""
 					SELECT id, deleted_at
 					FROM {self.table_name}
-					WHERE id = {self.SQL_value(id)};
+					WHERE id = {id};
 				"""
 				fetch:list = self.SQL_fetch(SELECT_person)
 				if not fetch:
