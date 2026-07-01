@@ -1,0 +1,38 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: ${MYSQL_CONTAINER}
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DB_PORT_OUT}:${DB_PORT_IN}"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - enspace
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: ${PMA_CONTAINER}
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: ${DB_PORT_IN}
+      UPLOAD_LIMIT: 100M
+    ports:
+      - "${PMA_PORT_OUT}:${PMA_PORT_IN}"
+    networks:
+      - enspace
+    depends_on:
+      - mysql
+
+networks:
+  enspace:
+    driver: bridge
+
+volumes:
+  mysql_data:

@@ -1,406 +1,137 @@
 {
   "info": {
-    "_postman_id": "e2b0a74b-3b36-4ccb-a4dc-c62e3c6c6b85",
-    "name": "my-peeps",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "38818934"
+    "name": "My Peeps",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
-  "item": [
-    {
-      "name": "people",
-      "item": [
-        {
-          "name": "people-post-01",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name_display\": \"John Doe 1\",\n  \"name_full\": \"Johnathan Alexander Doe\",\n  \"birth_date_day\": 15,\n  \"birth_date_month\": 6,\n  \"birth_date_year\": 1995\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people",
-              "host": [
-                "{{base_url}}people"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "people-post-02",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name_display\": \"John Doe 2\",\n  \"name_full\": \"Johnathan Alexander Doe\",\n  \"birth_date_day\": 15,\n  \"birth_date_month\": 6,\n  \"birth_date_year\": 1995\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people",
-              "host": [
-                "{{base_url}}people"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "people-get",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"id\":\"1\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people",
-              "host": [
-                "{{base_url}}people"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "people-get-all",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"id\":null}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people",
-              "host": [
-                "{{base_url}}people"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "people-delete",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"id\":4\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people",
-              "host": [
-                "{{base_url}}people"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "people-upcoming",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"month\":12\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people/upcoming",
-              "host": [
-                "{{base_url}}people"
-              ],
-              "path": [
-                "upcoming"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "people-update",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "PATCH",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\":1,\n  \"name_display\": \"John Doe 1 EDITED\",\n  \"name_full\": \"Johnathan Alexander Doe\",\n  \"birth_date_day\": 15,\n  \"birth_date_month\": 12,\n  \"birth_date_year\": 1997\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people",
-              "host": [
-                "{{base_url}}people"
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "people_log",
-      "item": [
-        {
-          "name": "people_log-post-01",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id_user\": 1,\n  \"content\": \"test content 1\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people_logs",
-              "host": [
-                "{{base_url}}people_logs"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "people_log-post-02",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id_user\": 99,\n  \"content\": \"test content 2\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people_logs",
-              "host": [
-                "{{base_url}}people_logs"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "people_log-get",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"id\":\"1\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people_logs",
-              "host": [
-                "{{base_url}}people_logs"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "people_log-get-all",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"id\":null}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people_logs",
-              "host": [
-                "{{base_url}}people_logs"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "people_log-delete",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"id\":1\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people_logs",
-              "host": [
-                "{{base_url}}people_logs"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "people_log-update",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "PATCH",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\":1,\n  \"content\": \"test content EDITED\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}people_logs",
-              "host": [
-                "{{base_url}}people_logs"
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    }
-  ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    }
-  ],
   "variable": [
     {
       "key": "base_url",
-      "value": ""
+      "value": "http://127.0.0.1:8000/api"
+    },
+    {
+      "key": "person_id",
+      "value": "1"
+    },
+    {
+      "key": "data_entry_id",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/health"
+      }
+    },
+    {
+      "name": "People",
+      "item": [
+        {
+          "name": "List all",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/people"
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/people",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name_display\": \"fake_John\",\n  \"name_full\": \"fake_John Doe\",\n  \"birth_date\": 15,\n  \"birth_month\": 6,\n  \"birth_year\": 1990\n}"
+            }
+          }
+        },
+        {
+          "name": "Show",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/people/{{person_id}}"
+          }
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/people/{{person_id}}",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name_display\": \"fake_Jane\",\n  \"name_full\": \"fake_Jane Smith\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/people/{{person_id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Person Data Entries",
+      "item": [
+        {
+          "name": "List all for person",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/people/{{person_id}}/person-data-entries"
+          }
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/people/{{person_id}}/person-data-entries",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data_entry_content\": \"Some notes about this person...\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Show",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/people/{{person_id}}/person-data-entries/{{data_entry_id}}"
+          }
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/people/{{person_id}}/person-data-entries/{{data_entry_id}}",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data_entry_content\": \"Updated notes...\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/people/{{person_id}}/person-data-entries/{{data_entry_id}}"
+          }
+        }
+      ]
     }
   ]
 }
